@@ -2,16 +2,16 @@ FROM espressif/idf:release-v4.4
 
 ARG DEBIAN_FRONTEND=nointeractive
 
-RUN apt-get update \
-  && apt install -y -q \
-  cmake \
-  git \
-  libglib2.0-0 \
-  libnuma1 \
-  libpixman-1-0 \
-  ruby
+#RUN apt-get update \
+#  && apt install -y -q \
+#  cmake \
+#  git \
+#  libglib2.0-0 \
+#  libnuma1 \
+#  libpixman-1-0 \
+#  ruby
 
-RUN ./opt/esp/entrypoint.sh && pip install --no-cache-dir idf-component-manager
+#RUN ./opt/esp/entrypoint.sh && pip install --no-cache-dir idf-component-manager
 
 # QEMU
 ENV QEMU_REL=esp-develop-20210220
@@ -23,27 +23,25 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV IDF_PYTHON_ENV_PATH=/opt/esp/python_env/idf4.4_py3.8_env
 
-RUN wget --no-verbose ${QEMU_URL} \
-  && echo "${QEMU_SHA256} *${QEMU_DIST}" | sha256sum --check --strict - \
-  && tar -xf $QEMU_DIST -C /opt \
-  && rm ${QEMU_DIST}
+#RUN wget --no-verbose ${QEMU_URL} \
+#  && echo "${QEMU_SHA256} *${QEMU_DIST}" | sha256sum --check --strict - \
+#  && tar -xf $QEMU_DIST -C /opt \
+#  && rm ${QEMU_DIST}
 
 ENV UNITY_REL=v2.5.2
 ENV UNITY_DIST=${UNITY_REL}.tar.gz
 ENV UNITY_URL=https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/${UNITY_DIST}
 
-RUN wget --no-verbose ${UNITY_URL} \
-  && tar -xf ${UNITY_DIST} -C /opt \
-  && rm ${UNITY_DIST}
+#RUN wget --no-verbose ${UNITY_URL} \
+#  && tar -xf ${UNITY_DIST} -C /opt \
+#  && rm ${UNITY_DIST}
 
 ENV PATH=/opt/qemu/bin:${PATH}
 
-RUN echo $($IDF_PATH/tools/idf_tools.py export) >> $HOME/.bashrc
+#RUN echo $($IDF_PATH/tools/idf_tools.py export) >> $HOME/.bashrc
 
 ADD project /project/
 
-#RUN printf "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${PWD}../)\n#set(TEST_COMPONENTS \"\$ENV{github.event.repository.name}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)" > /project/CMakeLists.txt
-#RUN printf "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${PWD}../)\nset(TEST_COMPONENTS \"\$ENV{github.event.repository.name}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
