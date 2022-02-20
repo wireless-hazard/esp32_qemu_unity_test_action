@@ -2,9 +2,7 @@
 set -e
 CODE_PATH="$1"
 . $IDF_PATH/export.sh
-#cd "${CODE_PATH}"
-ls
-cd /project/
+cd examples/test/
 echo ${CODE_PATH}
 idf.py build
 cd build 
