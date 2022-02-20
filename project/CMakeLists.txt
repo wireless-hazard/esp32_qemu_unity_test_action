@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 set(EXTRA_COMPONENT_DIRS "./components")
 
-set(TEST_COMPONENTS "$ENV{CODE_PATH}" CACHE STRING "List of components to test")
+set(TEST_COMPONENTS "nvs_muv_library" CACHE STRING "List of components to test")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(project_test)
