@@ -42,7 +42,7 @@ RUN echo $($IDF_PATH/tools/idf_tools.py export) >> $HOME/.bashrc
 
 ADD project /project/
 
-RUN printf "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${PWD}../)\nset(TEST_COMPONENTS \"\$ENV{github.event.repository.name}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)" > /project/CMakeLists.txt
+RUN printf "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${PWD}../)\n#set(TEST_COMPONENTS \"\$ENV{github.event.repository.name}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)" > /project/CMakeLists.txt
 RUN printf "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${PWD}../)\nset(TEST_COMPONENTS \"\$ENV{github.event.repository.name}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
