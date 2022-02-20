@@ -4,7 +4,7 @@ CODE_PATH="$1"
 . $IDF_PATH/export.sh
 #cd "${CODE_PATH}"
 cd /project/
-echo $ENV{github.event.repository.name}
+echo ${github.event.repository.name}
 idf.py build
 cd build 
 esptool.py --chip esp32 merge_bin --fill-flash-size 4MB -o flash_image.bin @flash_args
