@@ -2,7 +2,8 @@
 set -e
 CODE_PATH="$1"
 . $IDF_PATH/export.sh
-cd "${CODE_PATH}"
+#cd "${CODE_PATH}"
+cd /project/
 idf.py build
 cd build 
 esptool.py --chip esp32 merge_bin --fill-flash-size 4MB -o flash_image.bin @flash_args
