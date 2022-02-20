@@ -1,0 +1,6 @@
+- safe open/close functions
+- Be able to write/read different size integers and strings
+- return error codes when not able to read value from storage
+
+- Can NOT crash the system
+
