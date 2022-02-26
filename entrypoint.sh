@@ -5,6 +5,7 @@ CODE_PATH="$1"
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
 cd /project/
+ls /project/components/component/
 idf.py build
 cd build 
 esptool.py --chip esp32 merge_bin --fill-flash-size 4MB -o flash_image.bin @flash_args
