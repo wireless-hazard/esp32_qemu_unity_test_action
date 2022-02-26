@@ -42,8 +42,6 @@ RUN echo $($IDF_PATH/tools/idf_tools.py export) >> $HOME/.bashrc
 
 ADD project /project/
 
-ADD nvs_muv_library /project/components/nvs_muv_library/
-
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
