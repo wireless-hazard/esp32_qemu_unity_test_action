@@ -2,7 +2,7 @@
 set -e
 CODE_PATH="$1"
 . $IDF_PATH/export.sh
-ls
+ls $GITHUB_WORKSPACE
 cd /project/
 idf.py build
 cd build 
