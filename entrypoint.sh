@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 CODE_PATH="$1"
+echo ${CODE_PATH}
 . $IDF_PATH/export.sh
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
