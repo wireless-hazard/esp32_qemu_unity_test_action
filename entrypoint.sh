@@ -4,7 +4,7 @@ CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
-ls /project/components/
+ls /project/components/component/
 mv components/component components/$CODE_PATH
 cd /project/
 ls /project/components/
