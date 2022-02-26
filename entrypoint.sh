@@ -3,9 +3,10 @@ set -e
 CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
-cp $GITHUB_WORKSPACE/component/ /project/components/$CODE_PATH/
+cp -r $GITHUB_WORKSPACE/component/ /project/components/
+mv components/component components/$CODE_PATH
 cd /project/
-ls /project/components/$CODE_PATH/
+ls /project/components/
 idf.py build
 cd build 
 esptool.py --chip esp32 merge_bin --fill-flash-size 4MB -o flash_image.bin @flash_args
