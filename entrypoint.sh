@@ -6,9 +6,7 @@ echo ${CODE_PATH}
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
 mv /project/components/component /project/components/$CODE_PATH
-echo "cmake_minimum_required(VERSION 3.5) \n set(EXTRA_COMPONENT_DIRS \"./components\") \
-\n set(TEST_COMPONENTS \"\$ENV{CODE_PATH}\" CACHE STRING \"List of components to test\") \
-\n include(\$ENV{IDF_PATH}/tools/cmake/project.cmake) \n project(project_test)" > /project/components/$CODE_PATH/CMakeLists.txt
+echo -e "cmake_minimum_required(VERSION 3.5) \nset(EXTRA_COMPONENT_DIRS \"./components\") \nset(TEST_COMPONENTS \"\$ENV{CODE_PATH}\" CACHE STRING \"List of components to test\") \ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake) \nproject(project_test)" > /project/components/$CODE_PATH/CMakeLists.txt
 cat /project/components/$CODE_PATH/CMakeLists.txt
 cd /project/
 idf.py build
