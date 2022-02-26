@@ -4,7 +4,7 @@ CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
-mv /project/components/component components/nvs_muv_library
+mv /project/components/component /project/components/$CODE_PATH
 ls /project/components/
 cd /project/
 idf.py build
