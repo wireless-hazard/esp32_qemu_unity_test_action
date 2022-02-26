@@ -4,11 +4,11 @@ branding:
   color: orange
   icon: check-square
 inputs:
-  path:
+  component_name:
     description: 'Relative path under $GITHUB_WORKSPACE to place the repository'
     default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.path }}
+    - ${{ inputs.component_name }}
