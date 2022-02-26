@@ -4,8 +4,8 @@ CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
-ls /project/components/component/
-mv components/component components/$CODE_PATH
+mv /project/components/component components/$CODE_PATH
+ls /project/components/
 cd /project/
 ls /project/components/
 idf.py build
