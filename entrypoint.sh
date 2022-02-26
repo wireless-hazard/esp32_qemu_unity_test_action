@@ -4,10 +4,9 @@ CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
-mv /project/components/component components/$CODE_PATH
+mv /project/components/component components/nvs_muv_library
 ls /project/components/
 cd /project/
-ls /project/components/
 idf.py build
 cd build 
 esptool.py --chip esp32 merge_bin --fill-flash-size 4MB -o flash_image.bin @flash_args
