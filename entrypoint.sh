@@ -3,7 +3,7 @@ set -e
 CODE_PATH="$1"
 . $IDF_PATH/export.sh
 mkdir /project/components/
-cp $GITHUB_WORKSPACE/component/ /project/components/component/
+cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
 cd /project/
 idf.py build
 cd build 
