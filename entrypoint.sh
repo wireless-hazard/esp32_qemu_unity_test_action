@@ -6,7 +6,7 @@ echo ${CODE_PATH}
 mkdir /project/components/
 cp -r $GITHUB_WORKSPACE/component/ /project/components/component/
 mv /project/components/component /project/components/$CODE_PATH
-echo -e "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS components)\nset(TEST_COMPONENTS \"${CODE_PATH}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)" > /project/components/$CODE_PATH/CMakeLists.txt
+echo "cmake_minimum_required(VERSION 3.5)\nset(EXTRA_COMPONENT_DIRS \${project_dir}/components)\nset(TEST_COMPONENTS \"${CODE_PATH}\" CACHE STRING \"List of components to test\")\ninclude(\$ENV{IDF_PATH}/tools/cmake/project.cmake)\nproject(project_test)" > /project/components/$CODE_PATH/CMakeLists.txt
 chmod +x /project/components/$CODE_PATH/CMakeLists.txt
 cat /project/components/$CODE_PATH/CMakeLists.txt
 cd /project/
